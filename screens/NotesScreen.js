@@ -55,7 +55,9 @@ export default function NotesScreen({ route, navigation }) {
                     alignItems: "center",
                 }}>
                 <Text style={{ fontSize: 20, width: "80%" }}>{item.title}</Text>
-                <Pressable onPress={() => {}}>
+                <Pressable onPress={() => {
+                    setNotes(notes.filter((note) => note.id !== item.id));
+                }}>
                     <Entypo name="trash" size={24} color="grey" />      
                 </Pressable>
             </View>
