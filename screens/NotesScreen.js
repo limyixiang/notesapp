@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Pressable, FlatList } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
-export default function NotesScreen({ navigation }) {
+export default function NotesScreen({ route, navigation }) {
     
     const [notes, setNotes] = useState([
         { id: "1", title: "Walk the dog" },
@@ -30,6 +30,16 @@ export default function NotesScreen({ navigation }) {
             },
         });
     });
+
+    useEffect(() => {
+        if (route.params?.title) {
+            const newNote = {
+                title: route.params.title,
+                id: notes.length.toString()
+            };
+            setNotes([...notes, newNote]);
+        }
+    }, [route.params?.title])
 
     function renderNote({ item }) {
         return (
