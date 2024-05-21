@@ -11,18 +11,19 @@ export default function NotesScreen({ navigation }) {
     ]);
 
     function addNote() {
-        let newNote = {
-            id: `${notes.length + 1}`,
-            title: "Sample new note",
-        };
-        setNotes([...notes, newNote]);
+        // let newNote = {
+        //     id: `${notes.length + 1}`,
+        //     title: "Sample new note",
+        // };
+        // setNotes([...notes, newNote]);
+        navigation.navigate('Add Note');
     }
     
     useEffect(() => {
         navigation.setOptions({
             headerRight: () => {
                 return (
-                    <Pressable onPress={() => {addNote()}}>
+                    <Pressable onPress={addNote}>
                         <Entypo name="new-message" size={24} color="black" />
                     </Pressable>
                 );
